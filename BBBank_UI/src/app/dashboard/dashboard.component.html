@@ -1,1 +1,21 @@
-<p>dashboard works!</p>
+<div class="row">
+    <div class="col-12">
+        <!-- The CSS will give the chart a card like structure -->
+      <div class="card card-chart">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-sm-6 text-left">
+               <h5 class="card-category">Current Balance</h5> 
+              <!-- <h2 class="card-title">$ {{lineGraphData?.totalBalance}}</h2> -->
+            </div>
+          </div>
+        </div>
+        <div style="display: block">
+          <div class=" chart-area">
+              <!-- The HTML <canvas> element creates a fixed-size drawing surface that exposes one or more rendering contexts, which are used to create and manipulate the content shown. -->
+              <canvas #chartBig1> </canvas>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

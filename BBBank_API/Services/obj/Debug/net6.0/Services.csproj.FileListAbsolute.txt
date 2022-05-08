@@ -1,0 +1,17 @@
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Services\bin\Debug\net6.0\Services.deps.json
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Services\bin\Debug\net6.0\Services.dll
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Services\bin\Debug\net6.0\ref\Services.dll
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Services\bin\Debug\net6.0\Services.pdb
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Services\bin\Debug\net6.0\Entities.dll
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Services\bin\Debug\net6.0\Infrastructure.dll
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Services\bin\Debug\net6.0\Entities.pdb
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Services\bin\Debug\net6.0\Infrastructure.pdb
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Services\obj\Debug\net6.0\Services.csproj.AssemblyReference.cache
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Services\obj\Debug\net6.0\Services.GeneratedMSBuildEditorConfig.editorconfig
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Services\obj\Debug\net6.0\Services.AssemblyInfoInputs.cache
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Services\obj\Debug\net6.0\Services.AssemblyInfo.cs
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Services\obj\Debug\net6.0\Services.csproj.CoreCompileInputs.cache
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Services\obj\Debug\net6.0\Services.csproj.CopyComplete
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Services\obj\Debug\net6.0\Services.dll
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Services\obj\Debug\net6.0\ref\Services.dll
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Services\obj\Debug\net6.0\Services.pdb

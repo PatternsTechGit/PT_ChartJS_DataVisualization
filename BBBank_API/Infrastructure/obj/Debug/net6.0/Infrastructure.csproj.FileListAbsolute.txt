@@ -1,0 +1,15 @@
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Infrastructure\bin\Debug\net6.0\Infrastructure.deps.json
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Infrastructure\bin\Debug\net6.0\Infrastructure.dll
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Infrastructure\bin\Debug\net6.0\ref\Infrastructure.dll
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Infrastructure\bin\Debug\net6.0\Infrastructure.pdb
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Infrastructure\bin\Debug\net6.0\Entities.dll
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Infrastructure\bin\Debug\net6.0\Entities.pdb
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Infrastructure\obj\Debug\net6.0\Infrastructure.csproj.AssemblyReference.cache
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Infrastructure\obj\Debug\net6.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Infrastructure\obj\Debug\net6.0\Infrastructure.AssemblyInfoInputs.cache
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Infrastructure\obj\Debug\net6.0\Infrastructure.AssemblyInfo.cs
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Infrastructure\obj\Debug\net6.0\Infrastructure.csproj.CoreCompileInputs.cache
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Infrastructure\obj\Debug\net6.0\Infrastructure.csproj.CopyComplete
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Infrastructure\obj\Debug\net6.0\Infrastructure.dll
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Infrastructure\obj\Debug\net6.0\ref\Infrastructure.dll
+J:\Patterns\Code\Lab 4 - Data Visualization ChartJs\Code\PT_Data_Visualization\BBBank_API\Infrastructure\obj\Debug\net6.0\Infrastructure.pdb
