@@ -44,9 +44,8 @@ Previously we scaffolded a new Angular application in which we have integrated
 ### **About this exercise**
 In this exercise we will
 - Integrate chart JS in Angular
-- Creating ChartJS component
-- Adding data on the API
-- Populating 12 Months data on ChartJS graph
+- Creating and Giving Styling to the Card
+- Adding and Styling data in form of graph
 
 
 ***Note: Clone *Before* folder to start this lab**
@@ -67,10 +66,11 @@ Now paste the below given code in *index.html* file. This way our app will know 
 ```
 ----------------
  
-#### Step 2:  Adding ChartJS in Angular 
-To construct the graph we will use some HTML and Styling
+#### Step 2:  Adding Card in UI
+We will construct a card like structure on which we will display data.
+To construct the card we will create an HTML code.
 
-For HTML go to `app.components.html` file and add the following code in it.
+For HTML go to `app.components.html` file and paste the following code in it.
 
 ```html
 <div class="row">
@@ -289,6 +289,7 @@ import { lineGraphData } from './models/line-graph-data';
 import { TransactionService } from './services/transaction.service';
 
 // Register the imported plugins 
+// Since we are using Linear graph in our UI. We will register LinearScale
 Chart.register(LinearScale, CategoryScale);
 Chart.register(...registerables);
 
@@ -303,9 +304,7 @@ export class AppComponent implements OnInit {
 
   lineGraphData: lineGraphData;
   
-  // types of data 
-  canvas: any;
-
+  // Object to ToolTip
   gradientChartOptionsConfigurationWithTooltipRed: any;
 
   public myChartData: any;
@@ -333,7 +332,7 @@ export class AppComponent implements OnInit {
       },
       responsive: true,
 
-      // We have months in our Y-axis of chart. We are Styling it here
+      // Styling Y axis of our ToolTip
       scales: {
         yAxes:
           {
@@ -350,7 +349,7 @@ export class AppComponent implements OnInit {
               fontColor: '#9a9a9a',
             },
           },
-        // We have Balance in our X-axis of chart. We are Styling it here
+        // Styling x-axis of our tooltip
         xAxes:
           {
             barPercentage: 1.6,
@@ -376,12 +375,12 @@ export class AppComponent implements OnInit {
     this.context = (this.myCanvas
       .nativeElement as HTMLCanvasElement).getContext('2d');
     this.transactionService
-    
+        //getting 12 months balance for below given id number from our API   
       .GetLast12MonthBalances('aa45e3c9-261d-41fe-a1b0-5b4dcf79cfd3')
       .subscribe({
         next: (data: lineGraphData) => {
           this.lineGraphData = data;
-
+          // adding gradient under the lines in the graph
           const gradientStroke = this.context.createLinearGradient(0, 230, 0, 50);
           gradientStroke.addColorStop(1, 'rgba(233,32,16,0.2)');
           gradientStroke.addColorStop(0.4, 'rgba(233,32,16,0.0)');
