@@ -16,13 +16,11 @@ export class AppComponent implements OnInit {
 
   lineGraphData: lineGraphData;
 
-  canvas: any;
-
   gradientChartOptionsConfigurationWithTooltipRed: any;
 
   public myChartData: any;
 
-  public context: any;
+  public context: CanvasRenderingContext2D;
 
   constructor(private transactionService: TransactionService) {
     this.gradientChartOptionsConfigurationWithTooltipRed = {
