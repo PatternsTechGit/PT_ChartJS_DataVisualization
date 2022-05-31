@@ -11,7 +11,7 @@ It takes data in the JSON form, so it is merely simple to use it with any progra
 ## About this exercise
 In this lab we will be working on two code Bases, the **Backend Code Base** and the **Frontend Code Base**
 
-#### **Backend Code Base:**
+### **Backend Code Base:**
 Previously we developed a base structure of an API Solution in ASP.NET Core that have just two api functions GetLast12MonthBalances & GetLast12MonthBalances/{userId} which returns data of the last 12 months total balances.
 
 There are 4 Projects in the solution.
@@ -24,68 +24,53 @@ There are 4 Projects in the solution.
 
 7. **BBBankAPI:** This project contains TransactionController with GET methods GetLast12MonthBalances & GetLast12MonthBalances/{userId} to call the TransactionService.
 
+![](/images/12m.jpg)
+
 For more details about this Backend base project visit:
 https://github.com/PatternsTechGit/PT_ServiceOrientedArchitecture
 
-#### **Frontend Code Base:**
+-----------------
+
+### **Frontend Code Base:**
 Previously we scaffolded a new Angular application in which we have integrated
 
 - FontAwesome
 - Bootstrap Toolbar
 - Angular Material SideNav
+- Data received from API
 
+-----------
 
-#### About this exercise
+### **About this exercise**
 In this exercise we will
-- Configure Chart Js in Angular App
-- Allow Cross Origin Request Sharing in API
-- Add Chart JS
+- Integrate chart JS in Angular
+- Creating ChartJS component
+- Adding data on the API
+- Populating 12 Months data on ChartJS graph
+
+
+***Note: Clone *Before* folder to start this lab**
 
 ------------
 
-#### Step 1: Configure Chart Js in Angular app
-To install the latest chart.js package. running the following command
+### Step 1: Configure Chart Js in Angular
+To configure, install the latest *chart.js* package run the following command in the terminal
 
 ```typescript
 npm install chart.js --save
 ```
 This given command will save the entry inside the `package.json` file.
- 
-#### Step 2: - Allow Cross Origin Request Sharing in API
-Before adding Chart JS in the Angular App, we'll have to give permission to Angular App to access API endpoints.
 
-Now we will reconfigure the API's code to solve this issue:
-
-- Open Program.cs file
-
-```csharp
-// Creating a local variable
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-
-// Adding policy called MyAllowSpecificOrigins
-// Allowing all the requests from http://localhost:4200
-
-builder.Services.AddCors(options =>
-{
-  options.AddPolicy(name: MyAllowSpecificOrigins,
-                    builder =>
-                    {
-                        builder.WithOrigins("http://localhost:4200")
-                        .AllowAnyHeader()
-                                                .AllowAnyMethod();
-                    });
-});
-
-// Configuring the HTTP request pipeline by using
-
-app.UseCors(MyAllowSpecificOrigins);
+Now paste the below given code in *index.html* file. This way our app will know the path of installed chart.js  
+```html
+<script src="node_modules/chart.js/src/chart.js"></script>
 ```
-This will successfully allow the Angular App to access the API
+----------------
+ 
+#### Step 2:  Adding ChartJS in Angular 
+To construct the graph we will use some HTML and Styling
 
-#### Step 3: - Add Chart JS
-Let's represent the Data for 12 months via Chart Js in Angular app on the Dashboard Component.
-
-Go to `dashboard.components.html` file and add the following code in it.
+For HTML go to `app.components.html` file and add the following code in it.
 
 ```html
 <div class="row">
@@ -102,7 +87,7 @@ Go to `dashboard.components.html` file and add the following code in it.
         </div>
         <div style="display: block">
           <div class="chart-area">
-              <!-- The HTML <canvas> element creates a fixed-size drawing surface that exposes one or more rendering contexts, which are used to create and manipulate the content shown. -->
+              <!-- Here <canvas> is an HTML element which is used to draw graphics via scripting -->
               <canvas #chartBig1> </canvas>
             </div>
         </div>
@@ -111,8 +96,9 @@ Go to `dashboard.components.html` file and add the following code in it.
   </div>
 ```
 
+### Step 3: Styling Card for data visualization
 
-Go to `dashboard.components.css` file and add the following code in it.
+For this we will make new file named *'graph.css'* for the styling of our graph. Paste the below given css code in it
 ```css
 /* Graph CSS */
 
@@ -281,6 +267,175 @@ Go to `dashboard.components.css` file and add the following code in it.
     font-size: 1rem;
   }
 ```
+
+- Now we have to import this css file in main *app.component.css* by this code
+```css
+@import './graph.css';
+```
+----------
+
+### Step 5: Adding and Styling CartJS Data on the Card
+
+- For this we will paste below given code in *app.component.ts* file.
+- For detailed information on functionality of each line please read the comments given on each line/chunk of code.
+
+```typescript
+import {Component, ElementRef, OnInit, ViewChild,} from '@angular/core'; 
+
+// Import chartJS dependencies as per given in ChartJS documentation
+import {Chart, LinearScale, CategoryScale, registerables,} from 'chart.js';
+
+import { lineGraphData } from './models/line-graph-data';
+import { TransactionService } from './services/transaction.service';
+
+// Register the imported plugins 
+Chart.register(LinearScale, CategoryScale);
+Chart.register(...registerables);
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent implements OnInit {
+  // here chartBig1 is Canvas element we will use in our HTML
+  @ViewChild('chartBig1') myCanvas: ElementRef;
+
+  lineGraphData: lineGraphData;
+  
+  // types of data 
+  canvas: any;
+
+  gradientChartOptionsConfigurationWithTooltipRed: any;
+
+  public myChartData: any;
+
+  public context: any;
+
+  constructor(private transactionService: TransactionService) {
+    this.gradientChartOptionsConfigurationWithTooltipRed = {
+      maintainAspectRatio: false,
+      legend: {
+        display: false,
+      },
+
+      // Tooltips can be attached to any active element (icons, text links, buttons, etc.) on a page. They provide descriptions or explanations for their paired element.
+      // here we are styling our Tooltip
+      tooltips: {
+        backgroundColor: '#f5f5f5',
+        titleFontColor: '#333',
+        bodyFontColor: '#666',
+        bodySpacing: 4,
+        xPadding: 12,
+        mode: 'nearest',
+        intersect: 0,
+        position: 'nearest',
+      },
+      responsive: true,
+
+      // We have months in our Y-axis of chart. We are Styling it here
+      scales: {
+        yAxes:
+          {
+            barPercentage: 1.6,
+            gridLines: {
+              drawBorder: false,
+              color: 'rgba(29,140,248,0.0)',
+              zeroLineColor: 'transparent',
+            },
+            ticks: {
+              suggestedMin: 60,
+              suggestedMax: 125,
+              padding: 20,
+              fontColor: '#9a9a9a',
+            },
+          },
+        // We have Balance in our X-axis of chart. We are Styling it here
+        xAxes:
+          {
+            barPercentage: 1.6,
+            gridLines: {
+              drawBorder: false,
+              color: 'rgba(233,32,16,0.1)',
+              zeroLineColor: 'transparent',
+            },
+            ticks: {
+              padding: 20,
+              fontColor: '#9a9a9a',
+            },
+          },
+      },
+    };
+  }
+
+  ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    //The getContext() function returns the drawing context - which is an object that has all the drawing properties and functions you use to draw on the canvas. The getContext() function is the function that you use to get access to the canvas tags 2D drawing functions.
+    this.context = (this.myCanvas
+      .nativeElement as HTMLCanvasElement).getContext('2d');
+    this.transactionService
+    
+      .GetLast12MonthBalances('aa45e3c9-261d-41fe-a1b0-5b4dcf79cfd3')
+      .subscribe({
+        next: (data: lineGraphData) => {
+          this.lineGraphData = data;
+
+          const gradientStroke = this.context.createLinearGradient(0, 230, 0, 50);
+          gradientStroke.addColorStop(1, 'rgba(233,32,16,0.2)');
+          gradientStroke.addColorStop(0.4, 'rgba(233,32,16,0.0)');
+          gradientStroke.addColorStop(0, 'rgba(233,32,16,0)'); // red colors
+
+          //Properties of the chart
+          this.myChartData = new Chart(this.context, {
+            type: 'line',
+            data: {
+              labels: this.lineGraphData?.labels,
+              datasets: [
+                {
+                  label: 'Last 12 Month Balances',
+                  fill: true,
+                  backgroundColor: gradientStroke,
+                  borderColor: '#ec250d',
+                  borderWidth: 2,
+                  borderDashOffset: 0.0,
+                  //it fills color for points.
+                  pointBackgroundColor: '#ec250d',
+                  // It fills border color for points.
+                  pointBorderColor: 'rgba(255,255,255,0)',
+                  //
+                  pointHoverBackgroundColor: '#ec250d',
+                  //The width of the point border in pixels.
+                  pointBorderWidth: 20,
+                  // The radius of the point when hovered.
+                  pointHoverRadius: 4,
+                  //Border width of point when hovered.
+                  pointHoverBorderWidth: 15,
+                  //The radius of the point shape. If set to 0, the point is not rendered.
+                  pointRadius: 4,
+                  data: this.lineGraphData?.figures,
+                },
+              ],
+            },
+            options: this.gradientChartOptionsConfigurationWithTooltipRed,
+          });
+        },
+        error: (error: any) => {
+          console.log(error);
+        },
+      });
+  }
+}
+
+```
+----------------
+
+### FINAL OUTPUT 
+
+Our final output will show all the data returned from our API in chart form.
+
+![](/images/1.jpg)
 
 
 
